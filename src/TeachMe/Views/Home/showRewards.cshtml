@@ -1,0 +1,59 @@
+﻿@using TeachMe.ViewModels;
+@model System.Collections.Generic.IEnumerable<RewardDet>
+@{
+    
+    ViewData["Title"] = "Rewards";
+}
+
+<br /><br />
+
+<div id="Headline">
+    <h2><u> @ViewBag.Name @ViewBag.Title</u></h2>
+</div>
+<br />
+
+<div id="showRewards">
+@{
+
+    if (Model.Any())
+    {
+
+        int i = 1;
+        foreach (var item in Model)
+        {
+        <div id="headShowReward">
+            <text> Reward @i: </text>
+        </div>
+
+        @Html.DisplayFor(modelItem => item.RewardName) <br />
+
+        <img src="@Html.DisplayFor(modelItem => item.Picture)" width="30%" height="30%">
+            if (item.Video != null)
+            {
+            <video width="400" height="220" controls>
+                <source src="@Html.DisplayFor(modelItem => item.Video)" type="video/mp4">
+            </video>
+            }
+        <br /><br />
+            i++;
+        }
+
+        <div>
+               Please contact us to get you rewards  <a href="/Home/Contact"> Contact</a>
+        </div>
+
+    }
+    else
+    {
+        <div>
+            @ViewBag.Name : have no rewards.
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
+
+
+    }
+
+    <br />
+    <a asp-action="StudentDetails"> Return back</a>
+}
+</div>

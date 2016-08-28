@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TeachMe.Models.Course>
+@using System.Security.Claims
+
+
+@{
+    ViewData["Title"] = "Course List";
+}
+
+<br /><br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            @if (User.IsSignedIn())
+            {
+                @if (User.GetUserName().Equals("admin@gmail.com"))
+                {
+                    <td>
+                        <a asp-controller="Courses" asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
+                        <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
+                        <a asp-controller="Courses" asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+                    </td>
+                }
+            }
+        </tr>
+    }
+
+
+   
+</table>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+

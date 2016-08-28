@@ -1,0 +1,145 @@
+﻿@model IEnumerable<object>
+@using System.Security.Claims
+
+<link rel="stylesheet" href="~/css/Style.css" />
+<link rel="stylesheet" href="~/scss/style.scss" />
+
+@{
+    List<TeachMe.Models.Student> students = Model.ToList()[0] as List<TeachMe.Models.Student>;
+    List<TeachMe.Models.Review> reviews = Model.ToList()[1] as List<TeachMe.Models.Review>;
+    ViewData["Title"] = "Students Review";
+}
+<br />  <br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<hr />
+
+<form asp-controller="Home" asp-action="Search" method="post">
+    <div class="container" style="width:initial">
+        <div class="row" style="width:auto; margin-bottom:15px">
+            <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+                <div class="well" style="width:260px; height:400px; padding-top:2px; margin-left:120px">
+                    <h3 align="center" style="padding:0px">Search Filter</h3>
+                    <div class="form-group" style="align-content:center">
+                        <label for="Name" class="control-label" style="padding-right:0px; padding-top:0px;">First Name</label>
+                        <input type="text" class="control-label"  pattern="[a-zA-Z]{1,15}" title="letter  only" id="Name" aria-describedby="basic-addon1" name="Name" style="width:230px">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group" style="align-content:center">
+                            <label for="Address" class="form-group" style="padding-right:40px; padding-top:0px; width:140px">Address</label>
+                            <input type="text" class="form-group" id="Address" pattern="[a-zA-Z]{1,15}" title="letter  only" aria-describedby="basic-addon1" name="Address" style="width:230px">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="jubot" class="control-label" style="padding-right:105px; padding-top:0px;">jubot</label>
+                        <input type="number" min="0" step="1"class="form-group" id="jubot" aria-describedby="basic-addon1" name="jubot" style="width:230px">
+                          
+                    </div>
+                    
+                    <p class="text-center" style="padding:0px"><button type="submit" class="btn btn-danger glyphicon glyphicon-search" role="search"></button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+
+
+<div class="StudentReview">
+    <div class="itemStu">
+        @foreach (var item in students)
+        {
+            <div id="Head">
+                
+                Review For: @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)<br />
+            </div>
+            @foreach (var item1 in reviews.Where(m => m.StudentID == item.StudentID))
+                {
+                <div class="Review">
+                    <div id="date">
+                        @Html.DisplayFor(modelItem => item1.Date)
+                    </div>
+                    @Html.DisplayFor(modelItem => item1.Name) 
+                    @for (int i = 0; i < (int)@item1.rate; i++)
+                    {
+                        <img src="~/images/v.png" width="2%" height="2%" />
+                    }
+                    :<br />
+                    
+                    
+                    @Html.DisplayFor(modelItem => item1.Revieww).<br />
+                    @if (User.IsSignedIn())
+                    {
+                        @if (User.GetUserName().Equals("admin@gmail.com"))
+                        {
+                            <div>
+                                <a asp-controller="Reviews" asp-action="Edit" asp-route-id="@item1.ReviewID">Edit</a> |
+                                <a asp-controller="Reviews" asp-action="Details" asp-route-id="@item1.ReviewID">Details</a> |
+                                <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@item1.ReviewID">Delete</a>  |
+                            </div>
+                        }
+                    }
+                    <br />
+                </div>
+            }
+            <br />
+        <!--POST-->
+            <div id="PostComment">
+                <form action="InsertReview" method="post" >
+                    <div>Write a review</div>
+                    <p>
+                        <label for="Name">Name : </label>
+                        <input name="Name" id="Name" type="text" pattern="[a-zA-Z]{1,15}" title="letter  only" required />
+                    </p>
+                    <p>
+                        <label for="Revieww">Review : </label>
+                        <input name="Revieww" id="Revieww" type="text" pattern="[a-zA-Z]{1,15}" title="letter  only" required />
+                    </p>
+                    <p>
+                        Rating:
+                        <label for="rate"></label>
+                        <select class="form-control" placeholder="rate" name="rate" id="rate">
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Star</option>
+                            <option value="3">3 Star</option>
+                            <option value="4">4 Star</option>
+                            <option value="5">5 Star</option>
+                        </select>
+                    </p>
+                   
+                    <p><input type="hidden" pattern="[A-Za-z]" value="@item.StudentID" name="StudentID" /></p>
+                    <p><input type="submit" value="Post review" /></p>
+                </form>
+                <br />
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+@*<form action="Blog/InsertComment" method="post">
+        <h3>Post a comment</h3>
+        <p>
+            <label for="Writer">Writer</label>
+            <input name="Writer" id="Writer" type="text" required />
+        </p>
+        <p>
+            <label for="Title">Title</label>
+            <input name="Title" id="Title" type="text" required />
+        </p>
+        <p>
+            <label for="Content">Content</label>
+            <input name="Content" id="Content" type="text" required />
+        </p>
+
+        <p><input type="hidden" value="@item.StudentID" name="StudentID" /></p>
+        <button>
+            <p><input type="submit" value="Post comment" /></p>
+        </button>
+    </form>
+*@

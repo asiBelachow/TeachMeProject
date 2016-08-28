@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TeachMe.Models.Student>
+@using TeachMe.ViewModels;
+@using System.Security.Claims
+@{
+
+
+    ViewData["Title"] = "Students Details";
+}
+
+    <br /><br />
+    
+    <div id="Headline">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <br />
+
+<form asp-controller="Home" asp-action="StudentDetails">
+    <p>
+        <i class="glyphicon glyphicon-search"></i>
+        Student Name: <input style="padding:0px" type="text" pattern="[a-zA-Z]{1,15}" title="letter  only" name="search">
+        <input style="margin-left:30px" type="submit" value="search" />
+    </p>
+</form>
+<form asp-controller="Home" asp-action="StudentDetails">
+    <i class="glyphicon glyphicon-filter"></i>
+    <fieldset>Sort By
+        <select  name="filter">
+                <option value="FirstName">Fisrt Name</option>
+                <option value="LastName">Last Name</option>
+                <option value="Money">Money</option>
+                <option value="Address">Address</option>
+            <option value="MoneyPerHour">Money Per Hour</option>
+            </select>
+            <input style="margin-left:30px" type="submit" value="filter" />
+    </fieldset>
+</form>
+
+    <a id="top5" class="status a" href="#">Show Top5 Ajax</a>
+    <div class="StudentDetails">
+        @Html.Partial("_StudentList", Model)
+    </div>
+
+    <!--Search for blog name-->
+
+
+
+    <script>
+        $(function () {
+            $("#top5").click(function (e) {
+                e.preventDefault();
+                if ($("#top5").hasClass("status a")) {
+                    $.ajax({
+                        url: "/Students/AjaxTop5",
+                        datatype: "html",
+                        type: "POST",
+                        success: function (data) {
+                            $(".StudentDetails").html(data);
+                            $("#top5").removeClass("a").text("Show all");
+                        }
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: "/Students/AjaxShowAll",
+                        datatype: "html",
+                        type: "POST",
+                        success: function (data) {
+                            $(".StudentDetails").html(data);
+                            $("#top5").addClass("a").text("Show Top5 Ajax");
+                        }
+                    });
+
+                }
+
+            });
+        });
+    </script>
+

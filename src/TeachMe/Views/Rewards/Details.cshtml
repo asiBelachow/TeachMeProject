@@ -1,0 +1,63 @@
+@model TeachMe.Models.Reward
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br /><br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<br />
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfJubot)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfJubot)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+        <dd>
+            <img src="@Html.DisplayFor(model => model.Picture)" width="30%" height="30%" />
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+        <dd>
+            @if (Model.Video != null)
+             {
+                <video width="400" height="220" controls>
+                <source src="@Html.DisplayFor(model => model.Video)" type="video/mp4">
+                </video>
+             }
+             else 
+            {
+                <text>There are no video for this reward </text>
+            }
+        </dd>
+    
+            
+    </dl>
+</div>
+<br /><br />
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.RewardID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

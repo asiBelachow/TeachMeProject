@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TeachMe.Models.Reward>
+@using System.Security.Claims
+@{
+
+    ViewData["Title"] = "Our Rewards";
+}
+<br /><br />
+
+
+<br /><br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<hr />
+
+<form asp-controller="Home" asp-action="RewardsDetails">
+    <p>
+        <i class="glyphicon glyphicon-search"></i>
+        Reward Name: <input style="padding:0px" type="text" pattern="[a-zA-Z]{1,15}" title="letter  only" name="search">
+        <input style="margin-left:30px" type="submit" value="search" />
+    </p>
+</form>
+
+<div class="itemsReward">
+    @foreach (var item in Model)
+    {
+
+
+            <div id="Head">
+                <u> @Html.DisplayFor(modelItem => item.Title)</u>
+            </div>
+              <br />
+            <p id="details">
+                @Html.DisplayFor(modelItem => item.Description)
+                <br />
+                
+                <div id="Jubot">Money:&nbsp @Html.DisplayFor(modelItem => item.NumOfJubot)</div>
+                <br /><br />
+            </p>
+            <img src="@Html.DisplayFor(modelItem => item.Picture)" width="40%" height="40%">
+             @if (item.Video != null)
+             {
+                 <video width="400" height="220" controls>
+                     <source src="@Html.DisplayFor(modelItem => item.Video)" type="video/mp4">
+                 </video>
+              }
+
+        @if (User.IsSignedIn())
+        {
+            @if (User.GetUserName().Equals("admin@gmail.com"))
+            {
+                <div>
+                    <a asp-controller="Rewards" asp-action="Edit" asp-route-id="@item.RewardID">Edit</a> |
+                    <a asp-controller="Rewards" asp-action="Details" asp-route-id="@item.RewardID">Details</a> |
+                    <a asp-controller="Rewards" asp-action="Delete" asp-route-id="@item.RewardID">Delete</a>  |
+                </div>
+            }
+        }
+             
+
+
+    }
+
+</div>
+
+
+
+
+
+<div class="dd">
+
+
+  
+</div>

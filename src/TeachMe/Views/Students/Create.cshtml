@@ -1,0 +1,142 @@
+@model TeachMe.Models.Student
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Create";
+}
+<br /><br />
+@if (User.IsSignedIn())
+{
+    @if (User.GetUserName().Equals("admin@gmail.com"))
+    {
+        <div id="Headline">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    }
+}
+else
+{
+    <div id="Headline">
+        <h2>Fill all the details</h2>
+    </div>
+
+}
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="degree" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" placeholder="degree" name="degree" id="degree">
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Professor">Professor</option>
+                </select>
+                <span asp-validation-for="degree" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="year" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" placeholder="year" name="year" id="year">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <span asp-validation-for="year" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="JubotPerHour" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="JubotPerHour" class="form-control" />
+                <span asp-validation-for="JubotPerHour" class="text-danger" />
+            </div>
+        </div>
+
+         @*<div class="form-group" >
+         <label asp-for="Jubot" class="col-md-2 control-label" ></label>
+         <div class="col-md-10">
+             <input  asp-for="Jubot" class="form-control" />
+             <span asp-validation-for="Jubot" class="text-danger" />
+         </div>
+    </div>*@
+
+      
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        @{
+
+                            int cnt = 0;
+                            var courses = ViewBag.Courses;
+                            foreach (var item in courses)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                 }
+                                @:<td class="courseCheckBox">
+                                    <input type="checkbox" name="selectedCourses" value="@item.CourseID" />
+                                    @item.Title <text></text>
+                                    @:</td>
+                            }
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

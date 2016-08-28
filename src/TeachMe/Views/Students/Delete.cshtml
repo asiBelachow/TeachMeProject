@@ -1,0 +1,78 @@
+@model TeachMe.Models.Student
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br /><br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<br />
+
+<h3 id="delete">Are you sure you want to delete this?</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.degree)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.degree)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Jubot)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Jubot)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JubotPerHour)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JubotPerHour)
+        </dd>
+       
+       
+        
+        
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,154 @@
+@model TeachMe.Models.Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br /><br />
+<div id="Headline">
+    <h2>@ViewBag.Title</h2>
+</div>
+<br />
+
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+   
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="StudentID" />
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="degree" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" placeholder="degree" name="degree" id="degree">
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Professor">Professor</option>
+                </select>
+                <span asp-validation-for="degree" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="year" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" placeholder="year" name="year" id="year">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <span asp-validation-for="year" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Jubot" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Jubot" class="form-control" />
+                <span asp-validation-for="Jubot" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="JubotPerHour" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="JubotPerHour" class="form-control" />
+                <span asp-validation-for="JubotPerHour" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        <u>Select courses to remove</u>
+                        @{
+
+                            int cnt = 0;
+                            var courses = ViewBag.SelectedCourse;
+                            foreach (var item in courses)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                 }
+                                @:<td class="courseCheckBox">
+                                    <input type="checkbox" name="toremove" value="@item.CourseID" />
+                                    @item.Title <text></text>
+                                    @:</td>
+                            }
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        <u>Select courses to add>
+                        @{
+
+                            int cnt1 = 0;
+                            var notselectedcourses = ViewBag.NotSelectedCourses;
+                            foreach (var item1 in notselectedcourses)
+                            {
+                                if (cnt1++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                 }
+                                @:<td class="courseCheckBox">
+                                    <input type="checkbox" name="toadd" value="@item1.CourseID" />
+                                    @item1.Title <text></text>
+                                    @:</td>
+                            }
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+             </div>
+         </div>
+   </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--For the Slider in Student Details-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <title>@ViewData["Title"] - TeachMe</title>
+        <link rel="icon" href="~/images/icon.png">
+        <environment names="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/css/Style.css" />
+            <!--For The HTML Template-->
+            <link rel="stylesheet" href="~/Start/assets/css/main.css" />
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-controller="Home" asp-action="Start" class="navbar-brand">TeachMe</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Menu
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Home" asp-action="RewardsDetails">Our Rewards</a></li>
+                                <li><a asp-controller="Home" asp-action="StudentDetails">Students Details</a></li>
+                                <li><a asp-controller="Home" asp-action="StudentsReview">Students Review</a></li>
+                                <li><a asp-controller="Home" asp-action="Social">Social</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Statistics
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Home" asp-action="CoursesGraph">Courses Graph</a></li>
+                                <li><a asp-controller="Home" asp-action="StudentsGraph">Students Graph</a></li>
+                                <li><a asp-controller="Home" asp-action="StudentsMap">Students Map</a></li>
+
+                            </ul>
+                        </li><li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+       
+           
+            <p>&copy; 2016 - TeachMe</p>
+            <footer class="myfooter">
+                <div>
+                    <section id="contact">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="Contact">Link to contacs</a></li>
+                        </ul>
+                    </section>
+                    <section id="students">
+                        <h4>Students</h4>
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="StudentDetails">Link to students</a></li>
+                        </ul>
+                    </section>
+                    <section id="rewards">
+                        <h4>Rewards</h4>
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="RewardsDetails">Link to rewards</a> </li>
+                        </ul>
+                    </section>
+                </div>
+               
+            </footer>
+        </div>
+
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
+<!--For Google Maps-->-->
+<script src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+        var myCenter = new google.maps.LatLng(32.025427, 34.774112);
+
+        function initialize() {
+            var mapProp = {
+                center: myCenter,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                title: 'Click to zoom'
+            });
+
+            marker.setMap(map);
+
+            // Zoom to 9 when clicking on marker
+            google.maps.event.addListener(marker, 'click', function () {
+                map.setZoom(15);
+                map.setCenter(marker.getPosition());
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+</script>

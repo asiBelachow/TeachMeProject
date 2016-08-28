@@ -1,0 +1,403 @@
+﻿body {
+}
+
+
+/*------------------------------
+=Contact
+------------------------------*/
+.contact
+{
+    line-height: 200%;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    
+    -webkit-column-gap: 80px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 80px; /* Firefox */
+    column-gap: 80px;
+
+    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid; /* Firefox */
+    column-rule-style: solid;
+    -webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
+    -moz-column-rule-width: 1px; /* Firefox */
+    column-rule-width: 1px;
+    -webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
+    -moz-column-rule-color: lightblue; /* Firefox */
+    column-rule-color: lightblue;
+}
+
+
+/*------------------------------
+=FOOTER
+------------------------------*/
+
+.myfooter {
+  position: absolute;
+	left: 0;
+	width: 100%;
+	background: #222;
+    font-family: myFirstFont;
+}
+
+	.myfooter div {
+		display: table;
+		margin: 0 auto;
+		padding: 44px 0;
+		width: 940px;
+		color: #777;
+	}
+	
+		.myfooter div section {
+			display: table-cell;
+			width: 300px;
+		}
+		
+		.myfooter div #contact, footer div #students {
+			padding-right: 20px;
+		}
+		
+	.myfooter h4 {
+		color: #FFF;
+	}
+	
+	.myfooter a {
+		color: #999;
+	}
+	
+		.myfooter a:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	
+	.myfooter ul {
+		margin: 0 0 0 40px;
+		list-style: square;
+		color: #565656;
+	}
+	
+		.myfooter ul li a {
+			display: block;
+		}
+		
+		@font-face {
+   font-family: myFirstFont;
+   src: url('~/fonts/Calligraffiti-webfont.woff');
+   
+}
+
+
+/*------------------------------
+=Rewards Details
+------------------------------*/
+
+#Headline, .Home #HomeHead{
+ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-size: 30px;
+ font-weight:bolder;
+ color: black;
+
+}
+
+.itemReward #details
+{
+     font-size: 10px;
+	font-weight:bolder
+}
+
+
+.itemsReward , .courseCheckBox , .table, .dl-horizontal
+{
+    color: black;
+	font-weight:bolder
+}
+
+.form-horizontal,.table
+{
+  color: black;
+  font-size:17px;
+  font-weight:bolder
+}
+
+#Jubot
+{
+    
+    color:orange;
+}
+
+
+.StudentDetails
+{
+    font-size:17px;
+    color: black;
+	font-weight:bolder
+}
+
+#showRewards
+{
+    color:black;
+    font-size:25px;
+    font-weight:bolder
+}
+
+
+
+
+/*------------------------------
+=Buttons
+------------------------------*/
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"],
+	button,
+	.button {
+
+		 background-color: #4CAF50;
+    border: none;
+    color: black;
+    padding: 13px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 27px;
+    
+	}
+
+    .slide-up ,.slide-down
+    {	 background-color: #4CAF50;
+    border: none;
+    color: black;
+    padding: 4px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 27px;
+
+    }
+
+    #flip ,.btn2
+    {
+       background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 0px 0px;
+    cursor: pointer;
+
+    }
+
+/*------------------------------
+=For HomePage
+------------------------------*/
+
+    .Home #about
+    {
+        color:black;
+        font-size: 25px;
+        font-weight:bolder;
+    }
+/*------------------------------
+=For Review
+------------------------------*/
+
+  .Review #date
+  {
+      font-size:13px;
+      color:darkgrey;
+
+  }
+
+
+
+
+
+
+
+
+    .box{
+        width: 120px;
+        background: #f0e68c;
+		border: 1px solid #a29415;
+    }
+    .box-inner{
+        padding: 10px;
+    }
+
+
+
+    .itemStu{
+    width:900px;
+    display: inline-block;
+    box-sizing:border-box;
+    position:relative;
+    margin: 0 0 1em 1em;
+    color:black;
+    font-weight:bolder;
+}
+
+
+
+/*------------------------------
+=Admin Panel
+------------------------------*/
+
+#ManagePanel {
+	position: relative;
+	margin-top: 75px;
+	padding: 44px;
+ background: -webkit-linear-gradient(rgb(180, 221, 16), rgb(70,118,18)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(180, 221, 16), rgb(70,118,18)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(180, 221, 16), rgb(70,118,18)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(180, 221, 16), rgb(70,118,18)); /* Standard syntax */
+
+	/* Border-radius not implemented yet */
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+}
+
+
+	#ManagePanel h2
+    {
+       padding-left:1em;
+       font-size:90px;
+       font-weight:900;
+       
+       text-shadow: 2px 2px 8px #FF3222;
+	}
+
+    .manage
+    {
+        color:black;
+        font-weight:bolder;
+        font-size:10x;
+    }
+
+    
+  #adminicon
+  {
+      padding-top:10px;
+  }
+
+  #logo img
+  {
+      position: relative;
+  }
+
+
+/*------------------------------
+=For All delete warnings
+------------------------------*/
+
+  #warningDeleteCourse
+  {
+      color:red;
+      font-size:17px;
+  }
+  #delete
+  {
+      color:black;
+  }
+
+
+  /*------------------------------
+=Admin pic transtions
+------------------------------*/
+  #transition
+  {
+ -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+  }
+
+  #transition:hover
+  {
+      width: 300px;
+    height: 300px;
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(180deg);
+
+  }
+
+
+
+
+#logo img {
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+}
+#logo img:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+	
+
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+
+	aside {
+        position: relative;
+        left: 800px;
+        color:red;
+        bottom:400px;
+		display: table-cell;
+		width: 200px;
+		background: -webkit-linear-gradient(to right, rgb(220, 220, 220), rgb(236, 236, 236))); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(to right, rgb(220, 220, 220), rgb(236, 236, 236)); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(to right, rgb(220, 220, 220), rgb(236, 236, 236)); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to right, rgb(220, 220, 220), rgb(236, 236, 236)); /* Standard syntax */
+		
+	}
+    aside
+
+
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside section {
+	margin: 200px 0 0 25px;
+	padding: 11px 22px;
+	background: url("images/sidebar_section_background.png") repeat-x;
+	
+	/* Border-radius not implemented yet */
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+}
+
+	aside section ul {
+		margin: 0 0 0 22px;
+		list-style: none;
+	}
+	
+		aside section ul li a {
+			display: block;
+			text-decoration: none;
+			color: #000;
+		}
+		
+			aside section ul li a:hover {
+				text-decoration: underline;
+			}
+
+.fb-page
+{
+    top:100px;
+}
+
+
+
+
+
+
