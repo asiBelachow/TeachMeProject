@@ -1,5 +1,5 @@
 
-# Entity Framework 7 using ASP.NET MVC 6 Project
+# Entity Framework 7 using ASP.NET MVC 6 Project - TeachME 
 
  video preview on youtube: https://www.youtube.com/watch?v=3Uj08E8aj5E&feature=youtu.be
  
